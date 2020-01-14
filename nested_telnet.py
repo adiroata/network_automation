@@ -2,8 +2,8 @@
 import getpass
 import sys
 import telnetlib
-#import time
-import os
+import time
+#import os
 #import itertools
 
 host_pe = raw_input ("Introduceti adresa PE: ")
