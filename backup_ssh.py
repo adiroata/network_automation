@@ -3,17 +3,19 @@ from getpass import getpass
 import time
 
 #ip = raw_input("Please enter your IP address: ")
-username = raw_input("Introduceti username: ")
+username = raw_input("Please enter your username: ")
 password = getpass()
 
 remote_conn_pre=paramiko.SSHClient()
 remote_conn_pre.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 
+timestamp = time.strftime("%d" + "-" + "%m" + "-" + "%Y")
+
 f=open("loopbacks")
 
 for line in f:
     try:
-        print "Se acceseaza hostul: " + line
+        print "Se acceseaza hostul: " + line 
         HOST=line.strip()
 #        remote_conn_pre=paramiko.SSHClient()
 #        remote_conn_pre.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -23,28 +25,20 @@ for line in f:
 
 
         remote_conn = remote_conn_pre.invoke_shell()
-        output = remote_conn.recv(65535)
-        print output
-
-        remote_conn.send("show ip int brief\n")
+        remote_conn.send("terminal length 0\n")
         time.sleep(.5)
-        output = remote_conn.recv(65535)
-        print output
 
-        remote_conn.send("conf t\n")
+        remote_conn.send("show run\n")
         time.sleep(.5)
-        output = remote_conn.recv(65535)
-        print output
-
-        remote_conn.send("end\n")
-        time.sleep(.5)
-        output = remote_conn.recv(65535)
-        print output
 
         remote_conn.send("exit\n")
         time.sleep(.5)
-        output = remote_conn.recv(65535)
-        print output
+
+        readoutput = remote_conn.recv(65535)
+	saveoutput=open("config_host_" + HOST + "_" + timestamp, "w")
+	saveoutput.write(readoutput)
+        saveoutput.close        
+#	print readoutput
 
     except:
         print("Hostul " + str(HOST) + " e down.")
