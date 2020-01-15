@@ -1,0 +1,56 @@
+#!/usr/bin/expect
+
+log_user 1
+
+set timeout 240
+set router [lindex $argv 0]
+set DATE [exec date +%F]
+
+if {[file exists "/your/path/to/logs/$DATE/"] == 1} {
+	cd /your/path/to/logs/$DATE/;
+} else {
+	exec mkdir /your/path/to/logs/$DATE/;
+	cd /your/path/to/logs/$DATE/;
+}
+
+set now [clock seconds]
+set date [clock format $now -format {%H:%M:%S}]
+set file $router.$date
+
+log_file $file
+
+spawn ssh type_server_IP_address_here -l username
+
+expect "username@server_IP_address's password: "
+
+send "password\r"
+
+expect "*$ "
+
+send "telnet $router\r"
+
+expect {
+
+          "sername:" {
+
+                      send "username\n"
+
+                      expect "assword:"
+
+                      send "password\n"
+
+                      }
+
+          "ogin:" {
+
+                      send "username\n"
+
+                      expect "assword:"
+
+                      send "password\n"
+
+                      }
+
+}
+
+interact
