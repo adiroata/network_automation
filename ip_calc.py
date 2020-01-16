@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import ipaddress
-import os
 import csv
 
 ipadd = raw_input('Introduceti adresa (A.B.C.D/nm): ')
@@ -70,7 +69,7 @@ elif answer2 == ps:
 		print nets
 
 elif answer2 == s:
-	newcidr = raw_input('introduceti noul CIRD: ')
+	newcidr = raw_input('introduceti noul CIDR: ')
         print('Lista subneturilor va fi salvata in fisierul subnets.csv')
         for nets in n.subnets(new_prefix=int(newcidr)):
                 with open("subnets.csv", "a") as output2:
