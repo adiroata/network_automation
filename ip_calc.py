@@ -55,12 +55,12 @@ print('-------------------------------------------------\n')
 answer2 = raw_input('List subnets ?\n\nJust print: p\nPrint&Save: ps\nJust save: s\nAbort: a\n\nYour choice:   ')
 
 if answer2 == p:
-        newcidr = raw_input('introduceti noul CIRD: ')
+        newcidr = raw_input('introduceti noul CIDR: ')
         for nets in n.subnets(new_prefix=int(newcidr)):
                 print nets
 
 elif answer2 == ps:
-	newcidr = raw_input('introduceti noul CIRD: ')
+	newcidr = raw_input('introduceti noul CIDR: ')
 	print('Lista subneturilor va fi salvata in fisierul subnets.csv')
 	for nets in n.subnets(new_prefix=int(newcidr)):
 		with open("subnets.csv", "a") as output2:
