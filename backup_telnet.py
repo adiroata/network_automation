@@ -1,12 +1,9 @@
 #!/usr/bin/env python
+
 import getpass
 import sys
 import telnetlib
 import time
-#import os
-#import itertools
-#import gzip
-#import csv
 
 #   Introduceti user si pass
 user = raw_input("Introduceti username: ")
