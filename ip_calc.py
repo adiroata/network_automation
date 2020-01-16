@@ -5,15 +5,20 @@ import csv
 
 ipadd = raw_input('Introduceti adresa (A.B.C.D/nm): ')
 host = ipaddress.ip_interface(unicode(ipadd))
+hostonly=host.ip
 net = host.network
 
-print('-------------------------------------------------')
-print('Masca de retea este: ' + str(host.netmask))
-print('-------------------------------------------------')
+print('-------------------------------------------------\n')
 print('Adresa de retea este: ' + str(net))
-print('-------------------------------------------------')
+print('-------------------------------------------------\n')
+print('Adresa reverse DNS este: ' + str(hostonly.reverse_pointer))
+print('-------------------------------------------------\n')
+print('Masca de retea este: ' + str(host.netmask))
+print('-------------------------------------------------\n')
+print('Wildcard mask este: ' + str(host.hostmask))
+print('-------------------------------------------------\n')
 print('Numarul de hosturi este: ' + str(net.num_addresses))
-print('-------------------------------------------------')
+print('-------------------------------------------------\n')
 
 y=str('y')
 s=str('s')
@@ -39,7 +44,7 @@ elif answer1 == s:
 else:
 	print('OK, moving on.')
 
-print('-------------------------------------------------')
+print('-------------------------------------------------\n')
 
 answer2 = raw_input('Doriti sa subnetizati ?\n (y/n, Save in silent mode: s)   ')
 
