@@ -26,3 +26,5 @@ for n in range(4):
 		sys_if = session.get('.1.3.6.1.2.1.2.2.1.2.' + index)
 		sys_if_desc = session.get('.1.3.6.1.2.1.31.1.1.1.18.' + index)
 		print(str(sys_id.value) + ' | ' + str(sys_if.value) + ' | ' + str(sys_if_desc.value)  + ' | ' + str(sys_ipaddr))
+
+		
