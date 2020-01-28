@@ -15,10 +15,10 @@ def get_cell(col, row):
 
 
 for n in range(4):
+
 	HOST = get_cell(0, n)
 
 	try:
-
 		session = easysnmp.Session(hostname=str(HOST), community='public', version=2)
 		sys_walk = session.walk('.1.3.6.1.2.1.4.20.1.2')
 
