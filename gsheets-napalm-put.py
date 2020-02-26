@@ -13,7 +13,7 @@ import gzip
 # 4. Generam un fisier de autentificare pentru Google Drive API
 # 5. Facem share la un Worksheet catre adresa de email din JSON-ul de autentificare
 # 
-# Procedura completa este documentata pe https://www.kias.ro
+# Procedura completa este documentata pe https://www.kias.ro/2020/02/google-sheets-api.html
 #
 # Documentatie gspread:  https://gspread.readthedocs.io/en/latest/index.html
 # Documentatie NAPALM: https://napalm.readthedocs.io/en/latest/#
